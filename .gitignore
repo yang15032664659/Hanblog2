@@ -1,0 +1,4 @@
+# Project exclude paths
+/Han-admin/target/
+/Han-blog/target/
+/Han-framework/target/
