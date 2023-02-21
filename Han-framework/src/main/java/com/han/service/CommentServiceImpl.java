@@ -3,6 +3,7 @@ package com.han.service;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.han.constants.SystemConstants;
 import com.han.domain.ResponseResult;
 import com.han.entity.Comment;
 import com.han.enums.AppHttpCodeEnum;
@@ -22,13 +23,17 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
    @Autowired
    private UserService userService;
     @Override
-    public ResponseResult commentList(Long articleId, Integer pageNum, Integer pageSize) {
+    public ResponseResult commentList(String commentType,Long articleId, Integer pageNum, Integer pageSize) {
         //查询对应文章的根评论
         LambdaQueryWrapper<Comment> queryWrapper = new LambdaQueryWrapper<>();
         //对articleId进行判断
-        queryWrapper.eq(Comment::getArticleId,articleId);
+
+        queryWrapper.eq(SystemConstants.ARTICLE_COMMENT.equals(commentType),Comment::getArticleId,articleId);
         //根评论 rootId为-1
         queryWrapper.eq(Comment::getRootId,-1);
+        //评论类型
+        queryWrapper.eq(Comment::getType,commentType);
+
         //分页查询
         Page<Comment> page = new Page<>(pageNum,pageSize);
         page(page,queryWrapper);
@@ -80,4 +85,5 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
         }
         return commentVos;
     }
+
 }
