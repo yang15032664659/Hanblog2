@@ -10,4 +10,5 @@ import org.springframework.stereotype.Service;
 @Repository//代表持久层
 public interface ArticleMapper extends BaseMapper<Article> {
 
+
 }

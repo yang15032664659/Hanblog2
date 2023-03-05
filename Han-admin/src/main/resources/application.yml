@@ -1,5 +1,5 @@
 server:
-  port: 7777
+  port: 8989
 spring:
   datasource:
     username: root
@@ -10,9 +10,7 @@ spring:
     multipart:
       max-file-size: 2MB
       max-request-size: 5MB
-  mvc:
-    pathmatch:
-      matching-strategy: ant_path_matcher
+
 mybatis-plus:
   configuration:
     # 日志
@@ -23,9 +21,4 @@ mybatis-plus:
       logic-delete-value: 1
       logic-not-delete-value: 0
       id-type: auto
-
-
-oss:
-  accessKey: qs64cvNFs9VaME_QPAxetN3G4nktYGf6tTtn4z5N
-  secretKey: 1XnXATjilA3FJmiESLYECv1jui8MU2UZjkD9eYrT
-  bucket: hanblog2
+  mapper-locations: classpath*:/mapper/**/*.xml

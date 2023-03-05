@@ -164,6 +164,9 @@ public class RedisCache
             redisTemplate.opsForHash().putAll(key, dataMap);
         }
     }
+    public void incrementCacheMapValue(String key,String hKey,int v){
+        redisTemplate.boundHashOps(key).increment(hKey,v);
+    }
 
     /**
      * 获得缓存的Map
