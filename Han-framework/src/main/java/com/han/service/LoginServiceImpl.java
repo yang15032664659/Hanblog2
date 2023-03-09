@@ -2,12 +2,15 @@ package com.han.service;
 
 import com.han.domain.ResponseResult;
 import com.han.entity.LoginUser;
+import com.han.entity.Menu;
 import com.han.entity.User;
 import com.han.utils.BeanCopyUtils;
 import com.han.utils.JwtUtil;
 import com.han.utils.RedisCache;
+import com.han.utils.SecurityUtils;
 import com.han.vo.AdminUserInfoVo;
 import com.han.vo.BlogUserLoginVo;
+import com.han.vo.RoutersVo;
 import com.han.vo.UserInfoVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,6 +76,33 @@ public class LoginServiceImpl implements LoginService{
 
         return ResponseResult.okResult(adminUserInfoVo);
     }
+
+    @Override
+    public ResponseResult<RoutersVo> getRouters() {
+        Long userId = SecurityUtils.getUserId();
+        //查询menu 结果是tree的形式
+        List<Menu> menus = menuService.selectRouterMenuTreeByUserId(userId);
+        //封装数据返回
+        return ResponseResult.okResult(new RoutersVo(menus));
+    }
+
+    @Override
+    public ResponseResult logout() {
+        //获取当前用户信息
+        LoginUser loginUser = (LoginUser) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = loginUser.getUser().getId();
+        //从redis缓存中删除
+        redisCache.deleteObject("login:"+userId);
+        return ResponseResult.okResult();
+    }
+//@Override
+//public ResponseResult logout() {
+//    //获取当前登录的用户id
+//    Long userId = SecurityUtils.getUserId();
+//    //删除redis中对应的值
+//    redisCache.deleteObject("login:"+userId);
+//    return ResponseResult.okResult();
+//}
 
 
 }

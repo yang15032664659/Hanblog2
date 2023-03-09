@@ -5,10 +5,7 @@ import java.util.Date;
 import java.io.Serializable;
 
 
-import com.baomidou.mybatisplus.annotation.FieldStrategy;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -61,13 +58,13 @@ public class Article{
     //是否允许评论 1是，0否
     @TableField(strategy = FieldStrategy.IGNORED)
     private String isComment;
-    @TableField(strategy = FieldStrategy.IGNORED)
+    @TableField(strategy = FieldStrategy.IGNORED,fill = FieldFill.INSERT)
     private Long createBy;
-    @TableField(strategy = FieldStrategy.IGNORED)
+    @TableField(strategy = FieldStrategy.IGNORED,fill = FieldFill.INSERT)
     private Date createTime;
-    @TableField(strategy = FieldStrategy.IGNORED)
+    @TableField(strategy = FieldStrategy.IGNORED,fill = FieldFill.INSERT_UPDATE)
     private Long updateBy;
-    @TableField(strategy = FieldStrategy.IGNORED)
+    @TableField(strategy = FieldStrategy.IGNORED,fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
     //删除标志（0代表未删除，1代表已删除）
     @TableField(strategy = FieldStrategy.IGNORED)

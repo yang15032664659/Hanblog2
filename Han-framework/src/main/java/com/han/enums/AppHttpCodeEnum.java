@@ -18,7 +18,10 @@ public enum AppHttpCodeEnum {
     PASSWORD_NOT_NULL(510, "密码不能为空"),
     EMAIL_NOT_NULL(511, "邮箱不能为空"),
     REQUIRE_USERNAME(504,"必需填写用户名"),
+    MENU_UPDATE_ERROR(506,"修改菜单'写博文'失败，上级菜单不能选择自己"),
+    MENU_DELETE_ERROR(506,"存在子菜单不允许删除"),
     LOGIN_ERROR(505,"用户名或密码错误");
+
 
 
     int code;

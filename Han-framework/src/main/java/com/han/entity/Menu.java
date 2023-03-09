@@ -1,11 +1,15 @@
 package com.han.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import java.util.Date;
+import java.util.List;
+
 /**
  * 菜单权限表(SysMenu)表实体类
  *
@@ -17,6 +21,8 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @TableName("sys_menu")
+//链式编程  set就有返回值
+@Accessors(chain = true)
 public class Menu {
     //菜单ID@TableId
     private Long id;
@@ -55,8 +61,8 @@ public class Menu {
     private String remark;
     
     private String delFlag;
-
-
+    @TableField(exist = false)
+    private List<Menu> children;
 
 }
 

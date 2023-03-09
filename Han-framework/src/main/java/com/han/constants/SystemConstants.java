@@ -37,4 +37,8 @@ public class SystemConstants {
      */
     public static final String LINK_COMMENT = "1";
     public static final Object STATUS_NORMAL = "0";
+    /**
+     * 用户type = 1 为管理员
+     */
+    public static final String ADMAIN = "1";
 }

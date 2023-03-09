@@ -21,4 +21,9 @@ mybatis-plus:
       logic-delete-value: 1
       logic-not-delete-value: 0
       id-type: auto
+      column-like: true
   mapper-locations: classpath*:/mapper/**/*.xml
+oss:
+  accessKey: qs64cvNFs9VaME_QPAxetN3G4nktYGf6tTtn4z5N
+  secretKey: 1XnXATjilA3FJmiESLYECv1jui8MU2UZjkD9eYrT
+  bucket: hanblog2
