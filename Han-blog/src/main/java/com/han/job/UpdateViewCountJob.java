@@ -29,7 +29,7 @@ public class UpdateViewCountJob {
     @Autowired
     private ArticleMapper articleMapper;
 
-    @Scheduled(cron = "0/10 * * * * ?")
+    @Scheduled(cron = "0/59 * * * * ?")
     @Transactional
     public void updateViewCount(){
         //获取redis中的浏览量
@@ -67,9 +67,8 @@ public class UpdateViewCountJob {
             System.out.println("article1:" + article1.getId() + "  " + article1.getViewCount());
             articleService.update(article1,updateWrapper);
         }
-
-
     }
+
 //    @Autowired
 //    private RedisCache redisCache;
 //    @Autowired

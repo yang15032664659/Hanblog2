@@ -115,6 +115,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
     @Override
     public ResponseResult addArticle(AddArticleDto addArticleDto) {
         Article article = BeanCopyUtils.copyBean(addArticleDto,Article.class);
+        article.setViewCount(0l);
         article.setDelFlag(0);
         save(article);
 
