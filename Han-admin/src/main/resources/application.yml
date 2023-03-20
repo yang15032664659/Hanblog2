@@ -2,9 +2,9 @@ server:
   port: 8989
 spring:
   datasource:
-    username: root
-    password:
-    url: jdbc:mysql://localhost:3306/han_blog?serverTimezone=GMT%2b8
+    username: han_blog
+    password: yang15032664659
+    url: jdbc:mysql://8.130.66.34:3306/han_blog?serverTimezone=GMT%2b8
     driver-class-name: com.mysql.cj.jdbc.Driver
   servlet:
     multipart:
