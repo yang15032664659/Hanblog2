@@ -4,11 +4,11 @@ import com.baomidou.mybatisplus.core.conditions.Wrapper;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
-import com.han.entity.Article;
-import com.han.entity.User;
-import com.han.mapper.ArticleMapper;
-import com.han.service.ArticleService;
-import com.han.utils.RedisCache;
+
+import com.sangeng.domain.entity.Article;
+import com.sangeng.mapper.ArticleMapper;
+import com.sangeng.service.ArticleService;
+import com.sangeng.utils.RedisCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
